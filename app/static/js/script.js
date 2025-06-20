@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Custom Cursor
     const cursor = document.querySelector('.cursor');
     const cursorFollower = document.querySelector('.cursor-follower');
 
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 100);
     });
 
-    // Cursor effects on hover
     const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .filter-btn, .portfolio-link');
 
     hoverElements.forEach(el => {
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
 
     window.addEventListener('scroll', () => {
@@ -40,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
             navbar.classList.remove('scrolled');
         }
 
-        // Back to top button
         const backToTop = document.querySelector('.back-to-top');
         if (window.scrollY > 300) {
             backToTop.classList.add('active');
@@ -49,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -58,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -66,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Theme switcher
     const themeSwitch = document.getElementById('checkbox');
 
     themeSwitch.addEventListener('change', () => {
@@ -79,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Check for saved theme preference
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
@@ -89,29 +81,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Portfolio filter with transitions
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const portfolioGrid = document.querySelector('.portfolio-grid');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
 
-            // Add active class to clicked button
             button.classList.add('active');
 
             const filterValue = button.getAttribute('data-filter');
 
-            // Calculate transition delay based on grid position
             const calculateDelay = (index, total) => {
                 const row = Math.floor(index / 3);
                 const col = index % 3;
                 return (row * 0.1) + (col * 0.05);
             };
 
-            // First, animate out items that don't match the filter
             portfolioItems.forEach((item, index) => {
                 const matchesFilter = filterValue === 'all' ||
                     item.getAttribute('data-category') === filterValue;
@@ -123,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // After exit animations complete, filter and animate in matching items
             setTimeout(() => {
                 portfolioItems.forEach((item, index) => {
                     const matchesFilter = filterValue === 'all' ||
@@ -142,13 +128,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
-                // Force reflow to ensure animations trigger
                 void portfolioGrid.offsetWidth;
-            }, 500); // Match this with your CSS transition duration
+            }, 500);
         });
-    });
+    }); 
 
-    // Initialize Particles.js
     particlesJS('particles-js', {
         "particles": {
             "number": {
@@ -307,6 +291,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
+
             alert('Thank you for your message! I will get back to you soon.');
             this.reset();
         });

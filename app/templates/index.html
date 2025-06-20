@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- swiper js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -23,6 +27,7 @@
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
+                <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#contact">Contact</a>
@@ -78,107 +83,171 @@
                         solutions I develop are not only functional but also future-ready. Whether it's front-end design
                         or back-end logic, I enjoy bringing ideas to life through code and solving real-world problems
                         with smart digital solutions.</p>
-                    <!-- <div class="about-info">
-                        <div class="info-item">
-                            <p>Name: <span>Elang Atha Zahran</span></p>
-                            <p>Age: <span>18</span></p>
-                            <p>Experience: <span>6+ Months</span></p>
-                        </div>
-                        <div class="info-item">
-                            <p>Email: <span>athazahrane@gmail.com</span></p>
-                            <p>Phone: <span>+62 8778 8612 930</span></p>
-                        </div>
-                    </div> -->
-                    <a href="#" class="btn">Download CV</a>
+                    <a href="https://drive.google.com/uc?export=download&id=11wosUfp3EdpWZaOVFNSYJbLB9EYEds2G"
+                        class="btn" download>
+                        Download CV
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+        <h2 class="section-title">My <span>Experience</span></h2>
+        <div class="container">
+            <div class="content">
+                <div class="main-content">
+                    <i class="bi bi-mortarboard"></i>
+                    <div class="sub-content">
+                        <p>2018 - 2021</p>
+                        <h1>SMK Wikrama Bogor</h1>
+                        <p>
+                            The Software and Game Engineering Department at SMK Wikrama Bogor provides website and
+                            application development skills, as well as practical experience in frontend and backend
+                            technologies.
+                        </p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <i class="bi bi-mortarboard"></i>
+                    <div class="sub-content">
+                        <p>August - December 2024</p>
+                        <h1>Global Gengou Gakko</h1>
+                        <p>
+                            The intensive Japanese course at Global Gengou Gakko improved my Japanese language skills to
+                            N4 level, covering grammar, vocabulary, and speaking and writing skills.
+                        </p>
+                    </div>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="content">
+                <div class="main-content">
+                    <i class="bi bi-suitcase-lg"></i>
+                    <div class="sub-content">
+                        <p>July - December 2023</p>
+                        <h1>Frontend Web Developer Intern</h1>
+                        <p>
+                            As a Frontend Intern at PT Kreasi Sawala Nusantara, I develop and optimize the appearance
+                            and user experience of websites using HTML, CSS, and JavaScript.
+                        </p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <i class="bi bi-suitcase-lg"></i>
+                    <div class="sub-content">
+                        <p>May 2024</p>
+                        <h1>Competence Test</h1>
+                        <p>
+                            Taking the Competency Test by creating a website using Laravel as an evaluation of the
+                            eligibility of graduating from SMK. This process involves designing, developing, and
+                            completing projects according to industry standards.
+                        </p>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <i class="bi bi-suitcase-lg"></i>
+                    <div class="sub-content">
+                        <p>March 2024 - Present</p>
+                        <h1>Freelance</h1>
+                        <p>
+                            As a freelance web developer, I work on website development projects with a focus on
+                            responsive design and optimal user experience, as well as communicating directly with
+                            clients.
+                        </p>
+                    </div>
+                </div>
+                <div class="line second-content"></div>
+            </div>
+        </div>
+    </section>
 
     <!-- Skills Section -->
     <section id="skills" class="skills section">
         <div class="container">
             <h2 class="section-title">My <span>Skills</span></h2>
-            <div class="skills-slider">
-                <div class="slider-track">
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                            alt="HTML">
-                        <span>HTML</span>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/laravel.png') }}" alt="Laravel">
+                            <span>Laravel</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
-                        <span>CSS</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/css.png') }}" alt="CSS3">
+                            <span>CSS3</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                            alt="JavaScript">
-                        <span>JavaScript</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/html.png') }}" alt="HTML5">
+                            <span>HTML5</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                            alt="React">
-                        <span>React</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/js.png') }}" alt="Javascript">
+                            <span>Javascript</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
-                            alt="Next.js">
-                        <span>Next.js</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/react.png') }}" alt="React Js">
+                            <span>React Js</span>
+                        </div>
                     </div>
-                    <div class="skill-icon lskill-icon">
-                        <img src="https://raw.githubusercontent.com/devicons/devicon/v2.16.0/icons/laravel/laravel-plain.svg"
-                            alt="Laravel">
-                        <span>Laravel</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/nextjs.png') }}" alt="Next Js">
+                            <span>Next Js</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
-                        <span>PHP</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/flask.png') }}" alt="Flask">
+                            <span>Flask</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                            alt="Node.js">
-                        <span>Node.js</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/python.png') }}" alt="Python">
+                            <span>Python</span>
+                        </div>
                     </div>
-                    <!-- Duplicate items for infinite loop -->
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                            alt="HTML">
-                        <span>HTML</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/github.png') }}" alt="Github">
+                            <span>Github</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
-                        <span>CSS</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/tailwind.png') }}" alt="Tailwind">
+                            <span>Tailwind</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                            alt="JavaScript">
-                        <span>JavaScript</span>
+
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/skills/bootstrap.png') }}"
+                                alt="Bootstrap 5">
+                            <span>Bootstrap 5</span>
+                        </div>
                     </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                            alt="React">
-                        <span>React</span>
-                    </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
-                            alt="Next.js">
-                        <span>Next.js</span>
-                    </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg"
-                            alt="Laravel">
-                        <span>Laravel</span>
-                    </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
-                        <span>PHP</span>
-                    </div>
-                    <div class="skill-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                            alt="Node.js">
-                        <span>Node.js</span>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -212,8 +281,8 @@
                                     <a href="#" class="portfolio-link" title="View Details">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="https://els-reactjs-portfolio.vercel.app/" target="_blank" class="portfolio-link"
-                                        title="Live Demo">
+                                    <a href="https://els-reactjs-portfolio.vercel.app/" target="_blank"
+                                        class="portfolio-link" title="Live Demo">
                                         <i class="fas fa-link"></i>
                                     </a>
                                     <a href="https://github.com/elangathazahran/reactjs-portfolio"
@@ -360,6 +429,47 @@
             loop: true
         });
     </script>
+
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 5,
+            spaceBetween: 0,
+            loop: true,
+            freeMode: true,
+            grabCursor: true,
+            allowTouchMove: true,
+        });
+
+        // Autoplay logic pakai slide loop
+        let autoplay = true;
+        let currentProgress = 0;
+        let speed = 0.001; // makin kecil makin halus
+
+        function smoothAutoplay() {
+            if (autoplay && swiper.progress < 1) {
+                currentProgress += speed;
+                if (currentProgress >= 1) currentProgress = 0;
+                swiper.setProgress(currentProgress);
+            }
+            requestAnimationFrame(smoothAutoplay);
+        }
+        requestAnimationFrame(smoothAutoplay);
+
+        // Pause saat user scroll
+        let timeout;
+        swiper.el.addEventListener('pointerdown', () => {
+            autoplay = false;
+            clearTimeout(timeout);
+        });
+        swiper.el.addEventListener('pointerup', () => {
+            timeout = setTimeout(() => autoplay = true, 1000);
+        });
+    </script>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/d71dac1f06.js" crossorigin="anonymous"></script>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
