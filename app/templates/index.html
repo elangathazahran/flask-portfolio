@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
@@ -64,7 +64,7 @@
             <div class="about-content">
                 <div class="about-img">
                     <div class="img-box">
-                        <img src="./Animated-Portfolio/images/grid1.png" alt="Profile Image">
+                        <img src="{{ url_for('static', filename='images/grid1.png') }}" alt="Profile Image">
                     </div>
                 </div>
                 <div class="about-text">
@@ -199,21 +199,25 @@
                 <div class="portfolio-item active" data-category="web">
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="./Images/animebar.jpg" alt="Streaming anime">
+                            <img src="{{ url_for('static', filename='images/react portfolio.png') }}"
+                                alt="Web Project 2">
                             <div class="portfolio-badge">Web Development</div>
                         </div>
                         <div class="portfolio-overlay">
                             <div class="overlay-content">
-                                <h3>Streaming anime</h3>
-                                <p>Fully responsive streaming platform with html css and js</p>
+                                <h3>Portfolio Website</h3>
+                                <!-- <p>Custom portfolio with interactive 3D elements</p> -->
+                                <p>Custom portfolio with React Js</p>
                                 <div class="portfolio-links">
                                     <a href="#" class="portfolio-link" title="View Details">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="#" class="portfolio-link" title="Live Demo">
+                                    <a href="https://els-reactjs-portfolio.vercel.app/" target="_blank" class="portfolio-link"
+                                        title="Live Demo">
                                         <i class="fas fa-link"></i>
                                     </a>
-                                    <a href="#" class="portfolio-link" title="Source Code">
+                                    <a href="https://github.com/elangathazahran/reactjs-portfolio"
+                                        class="portfolio-link" title="Source Code">
                                         <i class="fab fa-github"></i>
                                     </a>
                                 </div>
@@ -223,38 +227,10 @@
                 </div>
 
                 <!-- Portfolio Item 2 -->
-                <div class="portfolio-item active" data-category="freelance">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img">
-                            <img src="./Images/freelance-1.jpg" alt="PT DHP">
-                            <div class="portfolio-badge">Freelance</div>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>PT DHP</h3>
-                                <p>I made this website with html css and js and it is also responsive on all screen
-                                    sizes.</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link" title="Live Demo">
-                                        <i class="fas fa-link"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link" title="Source Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 3 -->
                 <div class="portfolio-item active" data-category="certifications">
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="./Images/certiport.jpg" alt="Certiport">
+                            <img src="{{ url_for('static', filename='images/certiport.jpg') }}" alt="Certiport">
                             <div class="portfolio-badge">Certification</div>
                         </div>
                         <div class="portfolio-overlay">
@@ -274,65 +250,11 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 4 -->
-                <div class="portfolio-item active" data-category="web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img">
-                            <img src="./Images/react portfolio.png" alt="Web Project 2">
-                            <div class="portfolio-badge">Web Development</div>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Portfolio Website</h3>
-                                <!-- <p>Custom portfolio with interactive 3D elements</p> -->
-                                <p>Custom portfolio with React Js</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://els-reactjs-portfolio.vercel.app/" class="portfolio-link"
-                                        title="Live Demo">
-                                        <i class="fas fa-link"></i>
-                                    </a>
-                                    <a href="https://github.com/elangathazahran/reactjs-portfolio"
-                                        class="portfolio-link" title="Source Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 5 -->
-                <div class="portfolio-item active" data-category="freelance">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img">
-                            <img src="./Images/freelance-2.jpg" alt="Mobile App 2">
-                            <div class="portfolio-badge">Freelance</div>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>SMPN 157 Jakarta</h3>
-                                <p>I've created this landing page using laravel and it is responsive</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link" title="Live Demo">
-                                        <i class="fas fa-link"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 6 -->
+                <!-- Portfolio Item 3 -->
                 <div class="portfolio-item active" data-category="certifications">
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="./Images/gmtrix.jpg" alt="Marketing Materials">
+                            <img src="{{ url_for('static', filename='images/gmtrix.jpg') }}" alt="Marketing Materials">
                             <div class="portfolio-badge">certifications</div>
                         </div>
                         <div class="portfolio-overlay">
@@ -439,7 +361,7 @@
         });
     </script>
 
-    <script src="./script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>
