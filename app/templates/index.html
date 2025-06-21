@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- swiper js -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- web icon -->
+    <link rel="icon" type="icon" href="{{ url_for('static', filename='images/skills/python.png') }}">
 </head>
 
 <body>
@@ -257,94 +259,78 @@
     <section id="portfolio" class="portfolio section">
         <div class="container">
             <h2 class="section-title">My <span>Portfolio</span></h2>
+
             <div class="portfolio-filter">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="web">Web Developments</button>
                 <button class="filter-btn" data-filter="freelance">Freelances</button>
                 <button class="filter-btn" data-filter="certifications">Certifications</button>
             </div>
+
             <div class="portfolio-grid">
-                <!-- Portfolio Item 1 -->
-                <div class="portfolio-item active" data-category="web">
+                {% for item in portfolios %}
+                <div class="portfolio-item active" data-category="{{ item.category | lower }}">
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="{{ url_for('static', filename='images/react portfolio.png') }}"
-                                alt="Web Project 2">
-                            <div class="portfolio-badge">Web Development</div>
+                            <img src="{{ url_for('static', filename='images/' ~ item.image) }}" alt="{{ item.title }}">
+                            <div class="portfolio-badge">
+                                {{ 'Web Development' if item.category == 'web' else item.category }}
+                            </div>
                         </div>
                         <div class="portfolio-overlay">
                             <div class="overlay-content">
-                                <h3>Portfolio Website</h3>
-                                <!-- <p>Custom portfolio with interactive 3D elements</p> -->
-                                <p>Custom portfolio with React Js</p>
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.description }}</p>
                                 <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link" title="View Details">
+
+                                    {% if item.category == 'certifications' %}
+                                    <!-- Zoom Image (Only for certifications) -->
+                                    <a href="javascript:void(0);" class="portfolio-link zoom-trigger"
+                                        data-img="{{ url_for('static', filename='images/' ~ item.image) }}"
+                                        title="Lihat Gambar">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="https://els-reactjs-portfolio.vercel.app/" target="_blank"
-                                        class="portfolio-link" title="Live Demo">
+                                    {% elif item.live_link %}
+                                    <!-- Live Demo Link -->
+                                    <a href="{{ item.live_link }}" target="_blank" class="portfolio-link"
+                                        title="Live Demo">
                                         <i class="fas fa-link"></i>
                                     </a>
-                                    <a href="https://github.com/elangathazahran/reactjs-portfolio"
-                                        class="portfolio-link" title="Source Code">
+                                    {% endif %}
+
+                                    {% if item.github_link %}
+                                    <a href="{{ item.github_link }}" target="_blank" class="portfolio-link"
+                                        title="Source Code">
                                         <i class="fab fa-github"></i>
                                     </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    {% endif %}
 
-                <!-- Portfolio Item 2 -->
-                <div class="portfolio-item active" data-category="certifications">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img">
-                            <img src="{{ url_for('static', filename='images/certiport.jpg') }}" alt="Certiport">
-                            <div class="portfolio-badge">Certification</div>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Certiport html & css</h3>
-                                <p>I've completed the certiport html and css certification exam</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link" title="View Case Study">
-                                        <i class="fas fa-book-open"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    <!-- Delete Button -->
+                                    <form action="{{ url_for('main.delete', id=item.id) }}" method="POST"
+                                        style="display:inline; background-color: #fff; border-radius: 50%;">
+                                        <button type="submit" class="portfolio-link" title="Delete"
+                                            onclick="return confirm('Are you sure you want to delete this item?')"
+                                            style="background:none;border:none;color:inherit;">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
 
-                <!-- Portfolio Item 3 -->
-                <div class="portfolio-item active" data-category="certifications">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img">
-                            <img src="{{ url_for('static', filename='images/gmtrix.jpg') }}" alt="Marketing Materials">
-                            <div class="portfolio-badge">certifications</div>
-                        </div>
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Gmetrix html & css</h3>
-                                <p>I've completed the gmetrix html and css certification exam</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link" title="View Gallery">
-                                        <i class="fas fa-images"></i>
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </section>
+
+    <!-- Modal Zoom Image -->
+    <div id="zoomModal" class="zoom-modal" style="display:none;">
+        <span class="zoom-close" onclick="closeZoom()">&times;</span>
+        <img class="zoom-modal-content" id="zoomImage">
+    </div>
+
 
     <!-- Hire Me Banner -->
     <section class="hire-banner">
@@ -354,16 +340,12 @@
                 Looking for a dedicated and creative developer? Let's work together!
             </p>
             <div class="btn-group">
-                <a href="https://wa.me/6287788612930" target="_blank" class="btn whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i> Whatsapp me
-                </a>
-                <a href="#contact" class="btn">
-                    <i class="fa-regular fa-envelope"></i> Send your email
+                <a href="https://wa.me/6287788612930" target="_blank" class="btn">
+                    <i class="fa-brands fa-whatsapp"></i> Hire me
                 </a>
             </div>
         </div>
     </section>
-
 
 
     <!-- Contact Section -->
@@ -397,19 +379,14 @@
                             <p>+62 8778 8612 930</p>
                         </div>
                     </div>
-                    <!-- <div class="social-links">
-                        <a href="https://www.instagram.com/zaayeenn_/"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/elang-atha-zahran-100459220/"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/elangathazahran"><i class="fab fa-github"></i></a>
-                    </div> -->
 
                     <div class="social-links">
                         <a href="https://www.instagram.com/zaayeenn_/" target="_blank" class="instagram">
                             <i class="fab fa-instagram"></i>
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/elang-atha-zahran-100459220/" target="_blank" class="linkedin">
+                        <a href="https://www.linkedin.com/in/elang-atha-zahran-100459220/" target="_blank"
+                            class="linkedin">
                             <i class="fab fa-linkedin"></i>
                             <i class="fab fa-linkedin"></i>
                         </a>
@@ -418,8 +395,6 @@
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
-
-
                 </div>
 
 
@@ -457,11 +432,32 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
+    <!-- Script Zoom -->
+    <script>
+        const modal = document.getElementById('zoomModal');
+        const modalImg = document.getElementById('zoomImage');
+
+        document.querySelectorAll('.zoom-trigger').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const imgUrl = this.getAttribute('data-img');
+                modal.style.display = 'flex';
+                modalImg.style.opacity = 0;
+                modalImg.style.transform = 'scale(0.8)';
+                modalImg.src = imgUrl;
+            });
+        });
+
+        function closeZoom() {
+            modal.style.display = 'none';
+        }
+    </script>
+
+
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <!-- Setup and start animation! -->
     <script>
         var typed = new Typed('.typing', {
-            strings: ['Fullstack Web Developer', 'Web Designer', 'Freelancer'],
+            strings: ['Junior Fullstack Web Developer', 'Web Designer', 'Freelancer'],
             typeSpeed: 50,
             backSpeed: 50,
             fadeOut: true,
