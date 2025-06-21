@@ -885,6 +885,48 @@ input:checked+.slider:before {
     font-size: 1.2rem;
 }
 
+
+
+/* hire section */
+.hire-banner .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    background-color: var(--card-bg);
+    padding: 3rem 2rem;
+    border-radius: 10px;
+}
+
+.btn-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn.whatsapp {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: rgb(108, 240, 108);
+    color: var(--light-color);
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: capitalize;
+}
+
+.btn.whatsapp:hover {
+    background-color: lightgreen;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(80, 255, 77, 0.2);
+}
+
+
+
 /* Contact Section */
 .contact-content {
     display: flex;
@@ -923,7 +965,7 @@ input:checked+.slider:before {
     margin-bottom: 5px;
 }
 
-.social-links {
+/* .social-links {
     display: flex;
     gap: 15px;
     margin-top: 30px;
@@ -943,7 +985,133 @@ input:checked+.slider:before {
 .social-links a:hover {
     background-color: var(--primary-color);
     transform: translateY(-5px);
+} */
+
+
+
+
+
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
+
+/* instagram */
+.instagram {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ed23b0;
+    color: #fff;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.instagram>* {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    transition: var(--transition);
+}
+
+.instagram>i:first-child {
+    top: -50%;
+}
+
+.instagram:hover {
+    background-color: #fff;
+    color: #ed23b0;
+}
+
+.instagram:hover>i:first-child {
+    top: 50%;
+}
+
+.instagram:hover>i:last-child {
+    top: 150%;
+}
+
+/* linkedin*/
+.linkedin {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2388ed;
+    color: #fff;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.linkedin>* {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    transition: var(--transition);
+}
+
+.linkedin>i:first-child {
+    top: -50%;
+}
+
+.linkedin:hover {
+    background-color: #fff;
+    color: #2388ed;
+}
+
+.linkedin:hover>i:first-child {
+    top: 50%;
+}
+
+.linkedin:hover>i:last-child {
+    top: 150%;
+}
+
+/* github */
+.github {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2d292c;
+    color: #fff;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.github>* {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    transition: var(--transition);
+}
+
+.github>i:first-child {
+    top: -50%;
+}
+
+.github:hover {
+    background-color: #fff;
+    color: #2d292c;
+}
+
+.github:hover>i:first-child {
+    top: 50%;
+}
+
+.github:hover>i:last-child {
+    top: 150%;
+}
+
 
 .contact-form {
     flex: 1;
